@@ -26,7 +26,7 @@ This tutorial will help you run server locally
    ```
 2. Create `.end.dev` file and fill it according to the `env-file.template`
    ```sh
-   cat env-file.tempalate >> .end.dev
+   cat env-file.tempalate >> .env.dev
    ```
 3. Build docker images
    ```sh
