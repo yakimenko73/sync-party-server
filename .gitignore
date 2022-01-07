@@ -16,3 +16,4 @@ celerybeat-schedule
 venv/
 systemd/
 .env.*
+src/static/admin/

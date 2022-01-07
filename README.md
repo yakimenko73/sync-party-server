@@ -28,11 +28,15 @@ This tutorial will help you run server locally
    ```sh
    cat env-file.tempalate >> .env.dev
    ```
-3. Build docker images
+3. Execute from `src` directory
+   ```sh
+   ./manage.py collectstatic
+   ```
+4. Build docker images
    ```sh
    docker-compose build
    ```
-4. Run docker images
+5. Run docker images
    ```sh
    docker-compose up
    ```
