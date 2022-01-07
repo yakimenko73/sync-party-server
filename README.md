@@ -24,9 +24,9 @@ This tutorial will help you run server locally
    ```sh
    git clone https://github.com/yakimenko73/sync-party-server.git
    ```
-2. Create `.end.dev` file and fill it according to the `env-file.template`
+2. Create `.env.dev` file and fill it according to the `env-file.template`
    ```sh
-   cat env-file.tempalate >> .end.dev
+   cat env-file.tempalate >> .env.dev
    ```
 3. Build docker images
    ```sh
