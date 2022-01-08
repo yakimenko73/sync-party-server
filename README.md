@@ -32,17 +32,14 @@ This tutorial will help you run server locally
    ```sh
    ./manage.py collectstatic
    ```
-4. Build docker images
+4. Build and run with `docker-compose`
    ```sh
-   docker-compose build
+   docker-compose up --build
    ```
-5. Run docker images
+   or run in developer mode with `manage.py`
    ```sh
-   docker-compose up
+   ENV_FILE=../.env.dev ./manage.py runserver
    ```
-   
-## Usage
-
 If the installation was successful, the server will be available on the http://0.0.0.0:1337
 
 ## Contributing
