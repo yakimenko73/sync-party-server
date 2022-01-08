@@ -1,7 +1,9 @@
 import os
+import djongo
 
-# Environment settings
-ENV_FILE_ARG = 'ENV_FILE'
+from config.env import parse_env_file_from_command_line
+
+parse_env_file_from_command_line('ENV_FILE')
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -61,17 +63,17 @@ WSGI_APPLICATION = 'config.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/2.2/ref/settings/#databases
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-#         'NAME': 'db_name',
-#         'USER': 'dbms',
-#         'PASSWORD': 'db_password',
-#         'HOST': 'localhost',
-#         'PORT': '',
-#     }
-# }
-
+DATABASES = {
+    'default': {
+        'ENGINE': 'djongo',
+        'NAME': os.environ.get('MONGODB_DATABASE', 'database'),
+        'CLIENT': {
+            'username': os.environ.get('MONGODB_USERNAME', 'username').replace('\n', ''),
+            'password': os.environ.get('MONGODB_PASSWORD', 'password').replace('\n', ''),
+            'authSource': os.environ.get('MONGODB_DATABASE', 'database'),
+        }
+    }
+}
 
 # Password validation
 # https://docs.djangoproject.com/en/2.2/ref/settings/#auth-password-validators
