@@ -5,7 +5,7 @@ Django web server application for the open source project synk-party
 ### Built With
 
 * [Django](https://www.djangoproject.com/)
-* [Django-mongoengine](http://mongoengine.org/)
+* [Djongo](https://www.djongomapper.com/)
 * [Mongodb](https://www.mongodb.com/)
 * [Gunicorn](https://gunicorn.org/)
 * [Nginx](https://nginx.org/en/)
@@ -28,17 +28,23 @@ This tutorial will help you run server locally
    ```sh
    cat env-file.tempalate >> .env.dev
    ```
-3. Execute from `src` directory
+3. Collect static content for admin panel
    ```sh
-   ./manage.py collectstatic
+   ./src/manage.py collectstatic
    ```
 4. Build and run with `docker-compose`
    ```sh
    docker-compose up --build
    ```
-   or run in developer mode with `manage.py`
+   or run with `manage.py`
    ```sh
-   ENV_FILE=../.env.dev ./manage.py runserver
+   docker-compose up mongodb
+   ENV_FILE=./.env.dev ./src/manage.py runserver
+   ```
+5. Make entity migrations for admin panel
+   ```sh
+   ENV_FILE=./.env.dev ./src//manage.py makemigrations
+   ENV_FILE=./.env.dev ./src/manage.py migrate
    ```
 If the installation was successful, the server will be available on the http://0.0.0.0:1337
 
