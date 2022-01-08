@@ -5,11 +5,13 @@ services:
     build:
       context: .
       dockerfile: ./src/Dockerfile
+    restart: always
     command: sh -c 'cd src && gunicorn --workers 3 --bind 0.0.0.0:8000 config.wsgi:application'
     expose:
       - 8000
-    env_file:
-      - ./.env.dev
+    env_file: ./.env.dev
+    depends_on:
+      - mongodb
   nginx:
     build:
       context: .
@@ -18,3 +20,15 @@ services:
       - "1337:80"
     depends_on:
       - web-app
+  mongodb:
+    image: mongo:3.6
+    restart: always
+    volumes:
+      - ./mongodb/init-mongo.sh:/docker-entrypoint-initdb.d/init-mongo.sh:ro
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: $${MONGODB_USERNAME}
+      MONGO_INITDB_ROOT_PASSWORD: $${MONGODB_PASSWORD}
+      MONGO_INITDB_DATABASE: $${MONGODB_DATABASE}
+    ports:
+      - "27017:27017"
+    env_file: ./.env.dev
