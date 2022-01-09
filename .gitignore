@@ -17,3 +17,4 @@ venv/
 systemd/
 .env.*
 src/static/admin/
+src/*/migrations
