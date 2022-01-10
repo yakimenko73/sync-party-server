@@ -1,4 +1,5 @@
 import os
+
 import djongo
 
 from config.env import parse_env_file_from_command_line
@@ -28,6 +29,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'rest_framework',
     'rooms',
 ]
 
@@ -60,6 +62,13 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'config.wsgi.application'
+
+if not DEBUG:
+    REST_FRAMEWORK = {
+        'DEFAULT_RENDERER_CLASSES': (
+            'rest_framework.renderers.JSONRenderer',
+        )
+    }
 
 # Database
 # https://docs.djangoproject.com/en/2.2/ref/settings/#databases
