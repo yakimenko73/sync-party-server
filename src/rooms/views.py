@@ -2,7 +2,7 @@ from rest_framework import viewsets, status
 from rest_framework.response import Response
 
 from .serializers import RoomSerializer
-from .services import get_rooms, get_room_by_number
+from .services import *
 
 
 class RoomViewSet(viewsets.ViewSet):
@@ -15,3 +15,7 @@ class RoomViewSet(viewsets.ViewSet):
         if room:
             return Response(RoomSerializer(room).data)
         return Response(status=status.HTTP_404_NOT_FOUND)
+
+    def create(self, request):
+        room = create_room()
+        return Response(RoomSerializer(room).data)

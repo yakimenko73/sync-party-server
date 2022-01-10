@@ -5,6 +5,7 @@ Django web server application for the open source project synk-party
 ### Built With
 
 * [Django](https://www.djangoproject.com/)
+* [Django-rest-framework](https://www.django-rest-framework.org/)
 * [Djongo](https://www.djongomapper.com/)
 * [Mongodb](https://www.mongodb.com/)
 * [Gunicorn](https://gunicorn.org/)
