@@ -123,3 +123,5 @@ STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'static/')
 
 ROOM_NUMBER_LENGTH = 9
+
+SESSION_COOKIE_AGE = 86400  # in seconds

@@ -6,5 +6,5 @@ ROOM_NUMBER_RESOURCE = string.ascii_uppercase \
                        + '0123456789_-'
 
 
-def generate_room_number(length: int):
+def generate_room_number(length: int) -> str:
     return ''.join(choices(ROOM_NUMBER_RESOURCE, k=length))
