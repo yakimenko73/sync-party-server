@@ -6,4 +6,4 @@ from .models import Room
 class RoomSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = Room
-        fields = ('number', 'public', )
+        fields = ('key', 'host', 'public', )

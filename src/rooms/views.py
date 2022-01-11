@@ -11,14 +11,13 @@ class RoomViewSet(viewsets.ViewSet):
         rooms = get_rooms(public=True)
         return Response(RoomSerializer(rooms, many=True).data)
 
-    @handle_unsaved_session
     def retrieve(self, request, pk=None):
-        room = get_room_by_number(pk)
+        room = get_room_by_key(pk)
         if room:
             return Response(RoomSerializer(room).data)
         return Response(status=status.HTTP_404_NOT_FOUND)
 
     @handle_unsaved_session
     def create(self, request):
-        room = create_room()
+        room = create_room(request.session.session_key)
         return Response(RoomSerializer(room).data)
