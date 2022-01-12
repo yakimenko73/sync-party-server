@@ -78,8 +78,9 @@ DATABASES = {
         'ENGINE': 'djongo',
         'NAME': os.environ.get('MONGODB_DATABASE', 'database'),
         'CLIENT': {
-            'username': os.environ.get('MONGODB_USERNAME', 'username').replace('\n', ''),
-            'password': os.environ.get('MONGODB_PASSWORD', 'password').replace('\n', ''),
+            'host': f'mongodb://{os.environ.get("MONGODB_HOST", "hostname")}:{os.environ.get("MONGODB_PORT", "27017")}',
+            'username': os.environ.get('MONGODB_USERNAME', 'username'),
+            'password': os.environ.get('MONGODB_PASSWORD', 'password'),
             'authSource': os.environ.get('MONGODB_DATABASE', 'database'),
         }
     }
