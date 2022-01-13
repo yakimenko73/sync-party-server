@@ -18,7 +18,9 @@ services:
       - "1337:80"
     volumes:
       - ./nginx/default.conf:/etc/nginx/conf.d/default.conf:ro
-      - ./src/static:/var/www/static
+      - ../sync-party-site/app/build:/var/www/client # https://github.com/yakimenko73/sync-party-site
+      - ./src/static/admin:/var/www/client/static/admin
+      - ./src/static/rest_framework:/var/www/client/static/rest_framework
     depends_on:
       - web-app
   mongodb:
