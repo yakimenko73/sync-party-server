@@ -1,5 +1,6 @@
 import os
 
+import corsheaders
 import djongo
 
 from config.env import parse_env_file_from_command_line
@@ -30,10 +31,9 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework',
+    'corsheaders',
     'rooms',
 ]
-
-CORS_ORIGIN_ALLOW_ALL = True
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -65,13 +65,6 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'config.wsgi.application'
-
-if not DEBUG:
-    REST_FRAMEWORK = {
-        'DEFAULT_RENDERER_CLASSES': (
-            'rest_framework.renderers.JSONRenderer',
-        )
-    }
 
 # Database
 # https://docs.djangoproject.com/en/2.2/ref/settings/#databases
@@ -129,3 +122,16 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'static/')
 ROOM_KEY_LENGTH = 9
 
 SESSION_COOKIE_AGE = 86400  # in seconds
+
+if not DEBUG:
+    REST_FRAMEWORK = {
+        'DEFAULT_RENDERER_CLASSES': (
+            'rest_framework.renderers.JSONRenderer',
+        )
+    }
+
+CORS_ALLOW_ALL_ORIGINS = False
+
+CORS_ALLOWED_ORIGINS = [
+    'http://0.0.0.0:1337',
+]
