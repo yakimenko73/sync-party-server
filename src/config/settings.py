@@ -1,8 +1,5 @@
 import os
 
-import corsheaders
-import djongo
-
 from config.env import parse_env_file_from_command_line
 
 parse_env_file_from_command_line('ENV_FILE')
@@ -33,6 +30,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'corsheaders',
     'rooms',
+    'cache',
 ]
 
 MIDDLEWARE = [
@@ -135,3 +133,13 @@ CORS_ALLOW_ALL_ORIGINS = False
 CORS_ALLOWED_ORIGINS = [
     'http://0.0.0.0:1337',
 ]
+
+CACHES = {
+    'default': {
+        'BACKEND': 'django.core.cache.backends.locmem.LocMemCache',
+        'LOCATION': 'unique-snowflake',
+    }
+}
+
+USERNAMES_CACHE_NAME = 'user_usernames'  # key by which usernames are cached
+USER_COLORS_CACHE_NAME = 'user_colors'  # key by which user colors are cached
