@@ -1,7 +1,7 @@
 from rest_framework import viewsets, status
 from rest_framework.response import Response
 
-from sessions.decorators import *
+from sessions.decorators import set_random_userdata
 from .serializers import RoomSerializer
 from .services import *
 
@@ -17,8 +17,7 @@ class RoomViewSet(viewsets.ViewSet):
             return Response(RoomSerializer(room).data)
         return Response(status=status.HTTP_404_NOT_FOUND)
 
-    @handle_unsaved_session
     @set_random_userdata
     def create(self, request):
         room = create_room(request.session.session_key)
-        return Response(RoomSerializer(room).data)
+        return Response(RoomSerializer(room).data, status=status.HTTP_201_CREATED)

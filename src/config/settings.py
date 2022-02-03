@@ -35,7 +35,7 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
-    'django.contrib.sessions.middleware.SessionMiddleware',
+    'sessions.middleware.CookielessSessionMiddleware',
     'corsheaders.middleware.CorsMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -143,3 +143,4 @@ CACHES = {
 
 USERNAMES_CACHE_NAME = 'user_usernames'  # key by which usernames are cached
 USER_COLORS_CACHE_NAME = 'user_colors'  # key by which user colors are cached
+SESSION_COOKIE_NAME = 'sessionid'
