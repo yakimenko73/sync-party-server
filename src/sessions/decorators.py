@@ -26,8 +26,8 @@ def set_random_userdata(func):
 
     def inner_function(*args, **kwargs):
         request = args[1]
-        if 'username' not in request.session:
-            request.session['username'] = choice(cache.get(settings.USERNAMES_CACHE_NAME))
+        if 'nickname' not in request.session:
+            request.session['nickname'] = choice(cache.get(settings.USERNAMES_CACHE_NAME))
         if 'color' not in request.session:
             request.session['color'] = choice(cache.get(settings.USER_COLORS_CACHE_NAME))
 

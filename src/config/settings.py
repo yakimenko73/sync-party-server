@@ -1,5 +1,7 @@
 import os
 
+from corsheaders.defaults import default_headers
+
 from config.env import parse_env_file_from_command_line
 
 parse_env_file_from_command_line('ENV_FILE')
@@ -119,8 +121,12 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'static/')
 
 ROOM_KEY_LENGTH = 9
 
+# session config
 SESSION_COOKIE_AGE = 86400  # in seconds
+SESSION_COOKIE_NAME = 'sessionid'
+SESSION_HEADER_NAME = 'Session'
 
+# rest framework config
 if not DEBUG:
     REST_FRAMEWORK = {
         'DEFAULT_RENDERER_CLASSES': (
@@ -132,8 +138,14 @@ CORS_ALLOW_ALL_ORIGINS = False
 
 CORS_ALLOWED_ORIGINS = [
     'http://0.0.0.0:1337',
+    'http://localhost:3000',
 ]
 
+CORS_ALLOW_HEADERS = list(default_headers) + [
+    SESSION_HEADER_NAME,
+]
+
+# cache config
 CACHES = {
     'default': {
         'BACKEND': 'django.core.cache.backends.locmem.LocMemCache',
@@ -141,6 +153,8 @@ CACHES = {
     }
 }
 
-USERNAMES_CACHE_NAME = 'user_usernames'  # key by which usernames are cached
-USER_COLORS_CACHE_NAME = 'user_colors'  # key by which user colors are cached
-SESSION_COOKIE_NAME = 'sessionid'
+# key by which usernames are cached
+USERNAMES_CACHE_NAME = 'user_usernames'
+
+# key by which user colors are cached
+USER_COLORS_CACHE_NAME = 'user_colors'
