@@ -1,7 +1,7 @@
 from rest_framework import viewsets, status
 from rest_framework.response import Response
 
-from sessions.decorators import set_random_userdata, handle_unsaved_session
+from user_sessions.decorators import set_random_userdata, handle_unsaved_session
 from .serializers import RoomSerializer
 from .services import *
 
