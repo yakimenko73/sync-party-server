@@ -33,6 +33,7 @@ INSTALLED_APPS = [
     'corsheaders',
     'rooms',
     'cache',
+    'user_sessions',
 ]
 
 MIDDLEWARE = [
