@@ -3,6 +3,6 @@ from rest_framework.routers import DefaultRouter
 from .views import *
 
 router = DefaultRouter()
-router.register(r'api/user_sessions', SessionsViewSet, basename='user_sessions')
+router.register(r'api/sessions', SessionsViewSet, basename='sessions')
 
 urlpatterns = router.urls
