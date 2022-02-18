@@ -22,7 +22,7 @@ services:
     depends_on:
       - web-app
   mongodb:
-    image: mongo:3.6
+    image: mongo:5.0
     restart: always
     volumes:
       - ./mongodb/init-mongo.sh:/docker-entrypoint-initdb.d/init-mongo.sh:ro
