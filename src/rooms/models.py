@@ -9,3 +9,6 @@ class Room(models.Model):
 
     def __str__(self):
         return self.key
+
+    class Meta:
+        db_table = "rooms"
