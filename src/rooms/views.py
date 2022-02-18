@@ -11,6 +11,8 @@ class RoomViewSet(viewsets.ViewSet):
         rooms = get_rooms(public=True)
         return Response(RoomSerializer(rooms, many=True).data)
 
+    @handle_unsaved_session
+    @set_random_userdata
     def retrieve(self, request, pk=None):
         room = get_room_by_key(pk)
         if room:
