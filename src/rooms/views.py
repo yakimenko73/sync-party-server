@@ -28,5 +28,8 @@ class RoomViewSet(viewsets.ViewSet):
 
     @action(detail=True, methods=['get'])
     def members(self, _request, pk=None):
+        if not get_room_by_key(pk):
+            return Response(status=status.HTTP_404_NOT_FOUND)
+
         members = get_room_members(pk)
         return Response(RoomMembersSerializer(members, many=True).data, status=status.HTTP_200_OK)
