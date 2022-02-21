@@ -1,6 +1,6 @@
 from rest_framework import serializers
 
-from .models import Room, RoomMembers
+from .models import Room, RoomMember
 
 
 class RoomSerializer(serializers.HyperlinkedModelSerializer):
@@ -11,5 +11,5 @@ class RoomSerializer(serializers.HyperlinkedModelSerializer):
 
 class RoomMembersSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
-        model = RoomMembers
+        model = RoomMember
         fields = ('nickname', 'color',)

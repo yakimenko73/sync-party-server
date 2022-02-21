@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from .models import Room, RoomMembers
+from .models import Room, RoomMember
 
 
 @admin.register(Room)
@@ -11,8 +11,8 @@ class RoomAdmin(admin.ModelAdmin):
     list_filter = ('public',)
 
 
-@admin.register(RoomMembers)
-class RoomMembersAdmin(admin.ModelAdmin):
+@admin.register(RoomMember)
+class RoomMemberAdmin(admin.ModelAdmin):
     list_display = ('_id', 'room_id', 'nickname', 'color', 'date',)
     search_fields = ('room_id', 'nickname', 'date',)
     list_filter = ('date',)

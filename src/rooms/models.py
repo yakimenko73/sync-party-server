@@ -14,11 +14,11 @@ class Room(models.Model):
         return self.key
 
 
-class RoomMembers(models.Model):
+class RoomMember(models.Model):
     class Meta:
         db_table = "roommembers"
 
-    _id = models.AutoField(primary_key=True)
+    _id = models.CharField(primary_key=True, max_length=100)
     room_id = models.CharField(max_length=settings.ROOM_KEY_LENGTH)
     nickname = models.CharField(max_length=30)
     color = models.CharField(max_length=7)
