@@ -12,8 +12,6 @@ class RoomViewSet(viewsets.ViewSet):
         rooms = get_rooms(public=True)
         return Response(RoomSerializer(rooms, many=True).data)
 
-    @handle_unsaved_session
-    @set_random_userdata
     def retrieve(self, _request, pk=None):
         room = get_room_by_key(pk)
         if room:
@@ -26,6 +24,8 @@ class RoomViewSet(viewsets.ViewSet):
         room = create_room(request.session.session_key)
         return Response(RoomSerializer(room).data, status=status.HTTP_201_CREATED)
 
+    @handle_unsaved_session
+    @set_random_userdata
     @action(detail=True, methods=['get'])
     def members(self, _request, pk=None):
         if not get_room_by_key(pk):
