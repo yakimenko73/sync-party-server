@@ -1,10 +1,19 @@
 from django.contrib import admin
 
-from .models import Room
+from .models import Room, RoomMembers
 
 
 @admin.register(Room)
 class RoomAdmin(admin.ModelAdmin):
     list_display = ('key', 'host', 'public',)
     search_fields = ('key',)
-    list_filter = ('public',)  # not working due to broken parsing SQL to MongoDB query
+    # not working due to broken parsing SQL to MongoDB query
+    list_filter = ('public',)
+
+
+@admin.register(RoomMembers)
+class RoomMembersAdmin(admin.ModelAdmin):
+    list_display = ('_id', 'room_id', 'nickname', 'color', 'date',)
+    search_fields = ('room_id', 'nickname', 'date',)
+    list_filter = ('date',)
+    readonly_fields = ('_id', 'room_id',)
