@@ -1,7 +1,7 @@
 from django.conf import settings
 from django.db.models import QuerySet
 
-from .models import Room
+from .models import Room, RoomMembers
 from .utils import generate_room_key
 
 
@@ -22,3 +22,8 @@ def create_room(host: str) -> Room:
     )
     room.save()
     return room
+
+
+def get_room_members(room_key: str) -> [RoomMembers]:
+    members = RoomMembers.objects.filter(room_id=room_key)
+    return members
