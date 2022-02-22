@@ -10,6 +10,8 @@ class RoomSerializer(serializers.HyperlinkedModelSerializer):
 
 
 class RoomMembersSerializer(serializers.HyperlinkedModelSerializer):
+    id = serializers.CharField(source='_id')
+
     class Meta:
         model = RoomMember
-        fields = ('nickname', 'color',)
+        fields = ('id', 'nickname', 'color',)
