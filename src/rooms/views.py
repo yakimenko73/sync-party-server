@@ -2,7 +2,7 @@ from rest_framework import viewsets, status
 from rest_framework.decorators import action
 from rest_framework.response import Response
 
-from user_sessions.decorators import set_random_userdata, handle_unsaved_session
+from user_sessions.decorators import set_random_session_data, handle_unsaved_session
 from .serializers import RoomSerializer, RoomMembersSerializer
 from .services import *
 
@@ -19,15 +19,16 @@ class RoomViewSet(viewsets.ViewSet):
         return Response(status=status.HTTP_404_NOT_FOUND)
 
     @handle_unsaved_session
-    @set_random_userdata
+    @set_random_session_data
     def create(self, request):
         room = create_room(request.session.session_key)
         return Response(RoomSerializer(room).data, status=status.HTTP_201_CREATED)
 
     @handle_unsaved_session
-    @set_random_userdata
+    @set_random_session_data
     @action(detail=True, methods=['get'])
     def members(self, _request, pk=None):
+        print(_request)
         if not get_room_by_key(pk):
             return Response(status=status.HTTP_404_NOT_FOUND)
 

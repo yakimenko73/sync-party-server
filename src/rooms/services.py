@@ -6,7 +6,7 @@ from .utils import generate_room_key
 
 
 def get_rooms(public: bool) -> QuerySet:
-    rooms = Room.objects.filter(public__in=[public])
+    rooms = Room.objects.filter(public__in=[public]).iterator()
     return rooms
 
 
@@ -25,5 +25,5 @@ def create_room(host: str) -> Room:
 
 
 def get_room_members(room_key: str) -> [RoomMember]:
-    members = RoomMember.objects.filter(room_id=room_key)
+    members = RoomMember.objects.filter(room_id=room_key).iterator()
     return members
