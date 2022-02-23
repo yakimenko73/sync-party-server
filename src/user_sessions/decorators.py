@@ -13,7 +13,6 @@ def handle_unsaved_session(func):
     @wraps(func)
     def inner_function(*args, **kwargs):
         request = args[1]
-        print(request)
         if not request.session.session_key:
             request.session.save()
 
@@ -22,7 +21,7 @@ def handle_unsaved_session(func):
     return inner_function
 
 
-def set_random_userdata(func):
+def set_random_session_data(func):
     """
     Sets the username and color of the django SessionStore if it doesn't exist
     """

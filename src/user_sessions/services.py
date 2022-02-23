@@ -11,4 +11,3 @@ def create_session() -> SessionStore:
 def get_session(session_key: str) -> Session:
     session = Session.objects.filter(pk=session_key).first()
     return session
-
