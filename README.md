@@ -45,7 +45,7 @@ This tutorial will help you run server locally
    ```
 5. Make entity migrations for admin panel
    ```sh
-   ENV_FILE=./.env.dev ./src//manage.py makemigrations
+   ENV_FILE=./.env.dev ./src/manage.py makemigrations
    ENV_FILE=./.env.dev ./src/manage.py migrate
    ```
 If the installation was successful, the server will be available on the http://0.0.0.0:1337
