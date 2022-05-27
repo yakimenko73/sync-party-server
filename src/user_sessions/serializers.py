@@ -10,4 +10,7 @@ class SessionKeySerializer(serializers.BaseSerializer):
 
 class SessionDataSerializer(serializers.BaseSerializer):
     def to_representation(self, instance):
-        return instance
+        return {
+            'nickname': instance['nickname'],
+            'color': instance['color']
+        }
