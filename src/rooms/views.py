@@ -28,7 +28,6 @@ class RoomViewSet(viewsets.ViewSet):
     @set_random_session_data
     @action(detail=True, methods=['get'])
     def members(self, _request, pk=None):
-        print(_request)
         if not get_room_by_key(pk):
             return Response(status=status.HTTP_404_NOT_FOUND)
 

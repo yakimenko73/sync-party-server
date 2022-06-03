@@ -18,7 +18,9 @@ SECRET_KEY = os.environ.get('SECRET_KEY', 'secret')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = int(os.environ.get('DEBUG', 0))
 
-ALLOWED_HOSTS = os.environ.get('DJANGO_ALLOWED_HOSTS', '').split(' ')
+ALLOWED_HOSTS = [
+    os.environ.get('DJANGO_HOST', 'localhost'),
+]
 
 # Application definition
 
@@ -74,12 +76,12 @@ WSGI_APPLICATION = 'config.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'djongo',
-        'NAME': os.environ.get('MONGODB_DATABASE', 'database'),
+        'NAME': os.environ.get('MONGODB_DATABASE', 'mongodb'),
         'CLIENT': {
-            'host': f'mongodb://{os.environ.get("MONGODB_HOST", "hostname")}:{os.environ.get("MONGODB_PORT", "27017")}',
-            'username': os.environ.get('MONGODB_USERNAME', 'username'),
-            'password': os.environ.get('MONGODB_PASSWORD', 'password'),
-            'authSource': os.environ.get('MONGODB_DATABASE', 'database'),
+            'host': f'mongodb://{os.environ.get("MONGODB_HOST", "localhost")}:{os.environ.get("MONGODB_PORT", 27017)}',
+            'username': os.environ.get('MONGODB_USERNAME', 'admin'),
+            'password': os.environ.get('MONGODB_PASSWORD', 'admin'),
+            'authSource': os.environ.get('MONGODB_DATABASE', 'mongodb'),
         }
     }
 }
@@ -136,11 +138,11 @@ if not DEBUG:
         )
     }
 
+# cors configs
 CORS_ALLOW_ALL_ORIGINS = False
 
-CORS_ALLOWED_ORIGINS = [
-    'http://0.0.0.0:1337',
-    'http://localhost:3000',
+CORS_ALLOWED_ORIGIN_REGEXES = [
+    r'^http:\/\/localhost:\d+$',
 ]
 
 CORS_ALLOW_HEADERS = list(default_headers) + [
