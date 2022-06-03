@@ -17,5 +17,5 @@ jobs:
     - name: Build the Docker image
       with:
         context: .
-        file: ./src/Dockerfile
+        file: ./Dockerfile
         run: docker build . --tag web-app:$(date +%s)
