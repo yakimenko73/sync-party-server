@@ -9,7 +9,6 @@ SERVER_PARAMS_ENV_PREFIX = 'DJANGO'
 def get_mongodb_credentials() -> MongoDbCredentials:
     instance = MongoDbCredentials()
     load_env(instance, MONGODB_CREDS_ENV_PREFIX)
-    print(instance)
 
     return instance
 
@@ -17,6 +16,5 @@ def get_mongodb_credentials() -> MongoDbCredentials:
 def get_server_params() -> ServerParams:
     instance = ServerParams()
     load_env(instance, SERVER_PARAMS_ENV_PREFIX)
-    print(instance)
 
     return instance
