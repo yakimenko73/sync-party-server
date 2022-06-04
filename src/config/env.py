@@ -1,10 +1,22 @@
-import os
+from envclasses import load_env
+
+from config.model import MongoDbCredentials, ServerParams
+
+MONGODB_CREDS_ENV_PREFIX = 'MONGODB'
+SERVER_PARAMS_ENV_PREFIX = 'DJANGO'
 
 
-def parse_env_file_from_command_line(arg_name: str) -> None:
-    path_to_env_file = os.environ.get(arg_name)
-    if path_to_env_file and os.path.isfile(path_to_env_file):
-        with open(path_to_env_file, 'r') as f:
-            for line in f.readlines():
-                key, value = line.split("=")
-                os.environ[key] = value.replace('\n', '')
+def get_mongodb_credentials() -> MongoDbCredentials:
+    instance = MongoDbCredentials()
+    load_env(instance, MONGODB_CREDS_ENV_PREFIX)
+    print(instance)
+
+    return instance
+
+
+def get_server_params() -> ServerParams:
+    instance = ServerParams()
+    load_env(instance, SERVER_PARAMS_ENV_PREFIX)
+    print(instance)
+
+    return instance

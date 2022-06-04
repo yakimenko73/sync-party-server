@@ -2,9 +2,11 @@ import os
 
 from corsheaders.defaults import default_headers
 
-from config.env import parse_env_file_from_command_line
+from config import env
 
-parse_env_file_from_command_line('ENV_FILE')
+# parse env values
+server_params = env.get_server_params()
+mongodb_params = env.get_mongodb_credentials()
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -13,13 +15,13 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/2.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = os.environ.get('SECRET_KEY', 'secret')
+SECRET_KEY = server_params.secret_key
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = int(os.environ.get('DEBUG', 0))
+DEBUG = server_params.debug
 
 ALLOWED_HOSTS = [
-    os.environ.get('DJANGO_HOST', 'localhost'),
+    server_params.host,
 ]
 
 # Application definition
@@ -76,12 +78,12 @@ WSGI_APPLICATION = 'config.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'djongo',
-        'NAME': os.environ.get('MONGODB_DATABASE', 'mongodb'),
+        'NAME': mongodb_params.database,
         'CLIENT': {
-            'host': f'mongodb://{os.environ.get("MONGODB_HOST", "localhost")}:{os.environ.get("MONGODB_PORT", 27017)}',
-            'username': os.environ.get('MONGODB_USERNAME', 'admin'),
-            'password': os.environ.get('MONGODB_PASSWORD', 'admin'),
-            'authSource': os.environ.get('MONGODB_DATABASE', 'mongodb'),
+            'host': f'mongodb://{mongodb_params.host}:{mongodb_params.port}',
+            'username': mongodb_params.username,
+            'password': mongodb_params.password,
+            'authSource': mongodb_params.database,
         }
     }
 }
