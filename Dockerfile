@@ -12,6 +12,5 @@ COPY /src .
 ENV PYTHONDONTWRITEBYTECODE 1
 ENV PYTHONUNBUFFERED 1
 
-CMD python manage.py collectstatic
-CMD python3 manage.py runserver $DJANGO_HOST:$DJANGO_PORT
+CMD uvicorn app:app --host $API_HOST --port $API_PORT --workers 4
 

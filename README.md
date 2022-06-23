@@ -6,11 +6,13 @@ Django web server application for the open source project sync-party
 
 ### Built With
 
-* [Django](https://www.djangoproject.com/)
-* [Django-rest-framework](https://www.django-rest-framework.org/)
-* [Django-sessions](https://docs.djangoproject.com/en/4.0/topics/http/sessions/)
-* [Djongo](https://www.djongomapper.com/)
+* [FastAPI](https://github.com/tiangolo/fastapi/)
+* [Beanie](https://github.com/roman-right/beanie/)
+* [Pydantic](https://github.com/samuelcolvin/pydantic/)
+* [Asyncio](https://docs.python.org/3/library/asyncio.html/)
+* [Swagger](https://swagger.io//)
 * [Mongodb](https://www.mongodb.com/)
+* [Uvicorn](https://www.uvicorn.org//)
 * [Gunicorn](https://gunicorn.org/)
 * [Nginx](https://nginx.org/en/)
 
