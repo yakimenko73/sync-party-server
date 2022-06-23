@@ -15,7 +15,8 @@ celerybeat-schedule
 .ipynb_checkpoints
 venv/
 systemd/
-.env.*
+.env.prod
+.env.dev
 src/static/admin/
 src/static/rest_framework
 src/*/migrations

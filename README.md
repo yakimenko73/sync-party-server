@@ -33,9 +33,9 @@ Clone the repo
 
 Run server with `Docker`
 
-1. Create `.env.dev` file and fill it according to the `env-file.template`
+1. Create `.env.dev` file and fill it according to the `.env.sample`
    ```sh
-   cat env-file.template >> .env.dev
+   cat .env.sample >> .env.dev
    ```
 3. Build and run docker image
    ```sh
@@ -45,9 +45,9 @@ Run server with `Docker`
 
 Run production server with `nginx` by `docker-compose`
 
-1. Create `.env.prod` file and fill it according to the `env-file.template`
+1. Create `.env.prod` file and fill it according to the `.env.sample`
     ```sh
-    cat env-file.template >> .env.prod
+    cat .env.sample >> .env.prod
     ```
 2. Run `docker-compose`
    ```sh
