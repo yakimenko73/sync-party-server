@@ -1,11 +1,6 @@
 name: Docker Image CI
 
-on:
-  push:
-    branches: [ fastapi, develop ]
-  pull_request:
-    branches: [ develop ]
-
+on: push
 jobs:
 
   build:
@@ -13,9 +8,6 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v2
-    - name: Build the Docker image
-      with:
-        context: .
-        file: ./Dockerfile
-        run: docker build . --tag web-app:$(date +%s)
+      - uses: actions/checkout@v2
+      - name: Build the Docker image
+        run: docker build . --file Dockerfile --tag web-app:$(date +%s)
