@@ -1,6 +1,8 @@
-[![SWUbanner](https://raw.githubusercontent.com/vshymanskyy/StandWithUkraine/main/banner2-direct.svg)](https://github.com/vshymanskyy/StandWithUkraine/blob/main/docs/README.md)
+# <p align="center">Sync-party server app</p>
 
-# Sync-party server app
+[![Pray for Ukraine](https://img.shields.io/badge/made_in-ukraine-ffd700.svg?labelColor=0057b7)](https://stand-with-ukraine.pp.ua)
+[![Licence](https://img.shields.io/github/license/yakimenko73/sync-party-server)](https://github.com/yakimenko73/sync-party-server/blob/master/LICENSE)
+[![Code factor](https://www.codefactor.io/repository/github/yakimenko73/sync-party-server/badge)](https://www.codefactor.io/repository/github/yakimenko73/sync-party-server)
 
 ## What is it?
 
@@ -71,6 +73,4 @@ simply open an issue with the tag "enhancement". Don't forget to give the projec
 5. Open a Pull Request
 
 ## Contact
-
-* Twitter - [@masterslave_](https://twitter.com/masterslave_)
 * Email - r.yakimenko.73@gmail.com
