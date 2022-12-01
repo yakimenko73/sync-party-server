@@ -2,7 +2,7 @@
 
 [![Pray for Ukraine](https://img.shields.io/badge/made_in-ukraine-ffd700.svg?labelColor=0057b7)](https://stand-with-ukraine.pp.ua)
 [![Licence](https://img.shields.io/github/license/yakimenko73/sync-party-server)](https://github.com/yakimenko73/sync-party-server/blob/master/LICENSE)
-[![Code factor](https://www.codefactor.io/repository/github/yakimenko73/sync-party-server/badge)](https://www.codefactor.io/repository/github/yakimenko73/sync-party-server)
+[![Deploy](https://github.com/yakimenko73/sync-party-server/actions/workflows/docker-image.yml/badge.svg)](https://github.com/yakimenko73/sync-party-server/actions/workflows/docker-image.yml)
 
 ## What is it?
 
